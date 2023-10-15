@@ -22,3 +22,4 @@
 - To login go to admin page
 - System automaticly supply database with 3 default account tiers: 'Basic', 'Premium', 'Enterprice'
 - To test the application run: `docker-compose run --rm app sh -c "python manage.py test"`
+- To check lint of application code run: `docker-compose run --rm app sh -c "flake8"`
