@@ -16,16 +16,10 @@ class AdminSiteTests(TestCase):
         self.client = Client()
         self.admin_user = get_user_model().objects.create_superuser('Admin321', 'superSecret123')
         self.client.force_login(self.admin_user)
-        tier = Tier.objects.create(
-            name='Basic',
-            max_thumbnail_height=200,
-            can_see_original=False,
-            can_generate_links=False
-        )
         self.user = get_user_model().objects.create_user(
             username='mateusz',
             password='123456',
-            tier=tier
+            tier=Tier.objects.get(name='Basic')
         )
 
     def test_users_list(self):

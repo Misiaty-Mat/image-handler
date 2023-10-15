@@ -15,3 +15,10 @@
 - `GET http://localhost:8000/api/userimage/userimage/{:id}/thumbnail/?image_height=400` - get image thumbnail with height of 400
 - `GET http://localhost:8000/api/userimage/userimage/{:id}/generate-link/?live_time={:time_in_seconds}` - get a link for temporary access to an image for given number of seconds
 - `GET http://localhost:8000/admin` - go to admin page
+
+## Important information
+- System does not support registration
+- To create admin user run: `docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py createsuperuser"`
+- To login go to admin page
+- System automaticly supply database with 3 default account tiers: 'Basic', 'Premium', 'Enterprice'
+- To test the application run: `docker-compose run --rm app sh -c "python manage.py test"`

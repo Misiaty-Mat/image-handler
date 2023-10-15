@@ -158,8 +158,7 @@ class ImageUploadTests(TestCase):
     def setUp(self):
         self.client = APIClient()
         self.user = create_user('Mateusz', 'Password123')
-        tier = Tier.objects.create(name='Basic')
-        self.user.tier = tier
+        self.user.tier = Tier.objects.get(name='Basic')
         self.client.force_authenticate(self.user)
         self.user_image = create_user_image(self.user)
 
