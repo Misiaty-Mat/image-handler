@@ -17,6 +17,7 @@
 - `GET http://localhost:8000/admin` - go to admin page
 
 ## Important information
+- Remember to create `.env` file in the `/app/app` directory. Right where the `.env.sample` file is and set `SECRET_KEY` value
 - System does not support registration
 - To create admin user run: `docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py createsuperuser"`
 - To login go to admin page
