@@ -38,9 +38,10 @@ def validate_thumbnail_request(request):
         can_see_original = user_tier.can_see_original
 
     request_image_height = request.query_params.get('image_height')
-    if not (request_image_height and can_see_original):
+    print(can_see_original)
+    if request_image_height is None and not can_see_original:
         return error_message(
-            'Your account tier does not allow to see original image',
+            'Your account tier does not allow you to create thumbnail of that size.',
             status.HTTP_403_FORBIDDEN
         )
 
@@ -76,9 +77,9 @@ def validate_generate_link_request(request):
         )
 
     request_link_live_time = int(request_link_live_time)
-    if request_link_live_time < 30 or request_link_live_time > 30000:
+    if request_link_live_time < 300 or request_link_live_time > 30000:
         return error_message(
-            'You can only create links with live time between 30 and 30000 seconds',
+            'You can only create links with live time between 300 and 30000 seconds',
             status.HTTP_400_BAD_REQUEST
         )
 
